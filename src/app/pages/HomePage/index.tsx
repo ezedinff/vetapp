@@ -1,25 +1,19 @@
+import AdminLayout from 'app/components/layouts/AdminLayout';
+import Content from 'app/components/content';
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { NavBar } from 'app/components/NavBar';
-import { Masthead } from './Masthead';
-import { Features } from './Features';
-import { PageWrapper } from 'app/components/PageWrapper';
-
 export function HomePage() {
   return (
     <>
       <Helmet>
         <title>Home Page</title>
-        <meta
-          name="description"
-          content="A React Boilerplate application homepage"
-        />
+        <meta name="description" content="A Boilerplate application homepage" />
       </Helmet>
-      <NavBar />
-      <PageWrapper>
-        <Masthead />
-        <Features />
-      </PageWrapper>
+      {/* <span>HomePage container</span> */}
+      <AdminLayout />
+      {/* <Switch>
+            { routes.map((route) => <Route  key={route.path} path={`${path}/${route.path}`} component={Page}/> ) }
+          </Switch> */}
     </>
   );
 }
