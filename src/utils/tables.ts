@@ -48,40 +48,69 @@ const branchTAbleColumns = [
     selector: 'name',
   },
   {
-    name: 'Phone Number',
-    selector: 'phoneNumber',
+    name: 'Address',
+    selector: 'address',
   },
   {
-    status: 'Status',
+    name: 'Status',
     selector: 'status',
+  },
+  {
+    name: 'Phone Number',
+    selector: 'phoneNumber',
   },
   {
     status: 'Main Office',
     selector: 'isMainOffice',
   },
 ];
+
+const supplierTableColumns = clientTableColumns;
+const usersTableColumns = [
+  {
+    name: 'First Name',
+    selector: 'firstName',
+  },
+  {
+    name: 'Last Name',
+    selector: 'lastName',
+  },
+  {
+    name: 'Email',
+    selector: 'email',
+  },
+  {
+    name: 'Phone Number',
+    selector: 'phoneNumber',
+  },
+  {
+    name: 'Assigned Branch',
+    selector: 'assigned_branch',
+  },
+  {
+    name: 'Status',
+    selector: 'status',
+  },
+];
 export default {
   pets: {
     columns: petsTableColumns,
-    data: [
-      { name: 'Ezedin', actions: 'b' },
-      { name: 'mess', actions: 'b' },
-    ],
+    data: [],
   },
   clients: {
     columns: clientTableColumns,
     data: [],
   },
   suppliers: {
-    columns: clientTableColumns,
+    columns: supplierTableColumns,
     data: [],
   },
   branches: {
-    columns: clientTableColumns,
+    columns: branchTAbleColumns,
     data: [],
   },
   users: {
-    columns: clientTableColumns,
+    columns: usersTableColumns,
     data: [],
   },
 };

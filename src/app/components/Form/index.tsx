@@ -23,7 +23,10 @@ import {
   MuiPickersUtilsProvider,
 } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
+import { useEffect } from 'react';
 interface Props {
+  data?: any;
+  submitForm: (value) => void;
   elements: FormElement[];
   submitButtonTitle: string;
 }
@@ -142,9 +145,15 @@ export const FormInput = ({
   }
 };
 
-const Form: FC<Props> = ({ elements, submitButtonTitle = 'Create' }) => {
+const Form: FC<Props> = ({
+  data,
+  submitForm,
+  elements,
+  submitButtonTitle = 'Create',
+}) => {
   const submit = value => {
     console.log(value);
+    submitForm(value);
   };
   const {
     handleSubmit,
@@ -159,6 +168,15 @@ const Form: FC<Props> = ({ elements, submitButtonTitle = 'Create' }) => {
     validationSchema: validation.petsFormValidationSchema,
     onSubmit: submit,
   });
+
+  useEffect(() => {
+    if (!!data) {
+      elements.forEach(element =>
+        setFieldValue(element.name, data[element.name]),
+      );
+    }
+  }, [elements, data]);
+
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -197,7 +215,8 @@ const Form: FC<Props> = ({ elements, submitButtonTitle = 'Create' }) => {
             type="submit"
             variant="contained"
             color="primary"
-            disabled={Boolean(Object.entries(errors).length)}
+            onClick={() => submit(values)}
+            // disabled={Boolean(Object.entries(errors).length)}
             loading={false}
             title={submitButtonTitle}
           />

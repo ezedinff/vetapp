@@ -20,6 +20,7 @@ import Form from 'app/components/Form';
 import forms from 'utils/forms';
 import { Link as RouterLink } from 'react-router-dom';
 import Logo from 'assets/logo.png';
+import { useHistory } from 'react-router-dom';
 const LoginFooter = () => {
   return (
     <Typography
@@ -33,6 +34,12 @@ const LoginFooter = () => {
   );
 };
 export function LoginPage() {
+  const history = useHistory();
+  const submit = (value: { username: string; password: string }) => {
+    if (value.username === 'test@gmail.com' && value.password === '123456') {
+      history.push('/admin/dashboard');
+    }
+  };
   return (
     <>
       <Helmet>
@@ -84,7 +91,12 @@ export function LoginPage() {
                 children={'Enter your credentials to continue'}
               />
             </div>
-            <Form elements={forms.login} submitButtonTitle={'Login'} />
+            <Form
+              submitForm={submit}
+              data={{ username: 'test@gmail.com', password: '123456' }}
+              elements={forms.login}
+              submitButtonTitle={'Login'}
+            />
             <Divider />
             <LoginFooter />
           </Box>

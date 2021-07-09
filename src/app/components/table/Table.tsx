@@ -45,6 +45,9 @@ const Table = ({ title, data, columns }) => {
   const handleOpen = () => {
     setOpen(true);
   };
+  const submit = value => {
+    console.log(value);
+  };
   const getEntity = () => {
     let t = title.split(' ');
     t = t[t.length - 1] as string;
@@ -63,6 +66,7 @@ const Table = ({ title, data, columns }) => {
         title={getFormTitle('Create')}
         children={
           <Form
+            submitForm={submit}
             elements={forms[`${getEntity()}s`]}
             submitButtonTitle={'Create'}
           />
