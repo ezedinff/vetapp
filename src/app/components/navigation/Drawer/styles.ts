@@ -37,6 +37,9 @@ const styles = (theme: Theme) =>
     divider: {
       marginTop: theme.spacing(2),
     },
+    nestedList: {
+      paddingLeft: theme.spacing(2) + 30,
+    },
   });
 
 export default styles;

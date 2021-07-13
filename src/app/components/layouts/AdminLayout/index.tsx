@@ -43,13 +43,24 @@ const AdminLayout = (props: AdminLayoutProps) => {
         <Header onDrawerToggle={handleDrawerToggle} />
         <main className={classes.main}>
           <Switch>
-            {routes.map(route => (
-              <Route
-                key={route.path}
-                path={`${route.path}`}
-                component={route.component}
-              />
-            ))}
+            {routes.map(route =>
+              route.path && route.component ? (
+                <Route
+                  key={route.path}
+                  path={`${route.path}`}
+                  component={route.component}
+                />
+              ) : (
+                route.children &&
+                route.children.map(chiRoute => (
+                  <Route
+                    key={chiRoute.path}
+                    path={`${chiRoute.path}`}
+                    component={chiRoute.component}
+                  />
+                ))
+              ),
+            )}
             <Redirect to={'/admin/dashboard'} from={'/'} />
           </Switch>
           {/* { routes.map((route) => <Route  key={route.path} path={`${route.path}`} component={Page}/> ) } */}

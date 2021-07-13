@@ -18,7 +18,21 @@ import { BranchesPage } from 'app/pages/Admin/BranchesPage/Loadable';
 import { UsersPage } from 'app/pages/Admin/UsersPage/Loadable';
 import { DebtsPage } from 'app/pages/Admin/DebtsPage/Loadable';
 import { ConsultationPage } from 'app/pages/Admin/ConsultationPage/Loadable';
-const routes = [
+import { SalesPage } from 'app/pages/Admin/SalesPage/Loadable';
+import { PurchasePage } from 'app/pages/Admin/PurchasePage/Loadable';
+import { StockPage } from 'app/pages/Admin/StockPage/Loadable';
+import { ProductPage } from 'app/pages/Admin/ProductPage/Loadable';
+import { DiscountPage } from 'app/pages/Admin/DiscountPage/Loadable';
+interface CustomRoute {
+  id: string;
+  icon?: React.ReactNode;
+  path?: string;
+  active: boolean;
+  component?: React.ComponentType<any>;
+  children?: CustomRoute[];
+  roles: string[];
+}
+const routes: CustomRoute[] = [
   {
     id: 'Dashboard',
     icon: <Dashboard />,
@@ -54,9 +68,45 @@ const routes = [
   {
     id: 'Inventory',
     icon: <Store />,
-    path: '/admin/inventory',
     active: false,
     component: InventoryPage,
+    children: [
+      {
+        id: 'Sales',
+        path: '/admin/sales',
+        active: false,
+        component: SalesPage,
+        roles: ['admin', 'manager'],
+      },
+      {
+        id: 'Purchases',
+        path: '/admin/purchases',
+        active: false,
+        component: PurchasePage,
+        roles: ['admin', 'manager'],
+      },
+      {
+        id: 'Stock',
+        path: '/admin/stock',
+        active: false,
+        component: StockPage,
+        roles: ['admin', 'manager'],
+      },
+      {
+        id: 'Products',
+        path: '/admin/products',
+        active: false,
+        component: ProductPage,
+        roles: ['admin', 'manager'],
+      },
+      {
+        id: 'Discounts',
+        path: '/admin/discounts',
+        active: false,
+        component: DiscountPage,
+        roles: ['admin', 'manager'],
+      },
+    ],
     roles: ['admin', 'manager'],
   },
   {
