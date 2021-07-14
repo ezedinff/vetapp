@@ -21,6 +21,8 @@ import forms from 'utils/forms';
 import { Link as RouterLink } from 'react-router-dom';
 import Logo from 'assets/logo.png';
 import { useHistory } from 'react-router-dom';
+import ScrollArea from 'react-scrollbar';
+
 const LoginFooter = () => {
   return (
     <Typography
@@ -45,13 +47,19 @@ export function LoginPage() {
       <Helmet>
         <title>Login</title>
       </Helmet>
-      <Box style={{ background: '#e3f2fd', overflow: 'hidden' }}>
+      <Box
+        style={{ background: '#e3f2fd', height: '100vh', overflow: 'hidden' }}
+      >
         <div
-          style={{ textAlign: 'center', padding: '24px', marginBottom: '24px' }}
+          style={{
+            textAlign: 'center',
+            padding: '24px',
+            marginBottom: '8px',
+          }}
         >
-          <img width="128" loading="lazy" src={Logo} />
+          <img width="64" loading="lazy" src={Logo} />
           <Typography
-            variant="h4"
+            variant="h5"
             color="textSecondary"
             style={{ fontWeight: 'bolder', textTransform: 'uppercase' }}
           >
@@ -61,7 +69,6 @@ export function LoginPage() {
         <Container
           style={{
             display: 'flex',
-            height: '100vh',
             flexDirection: 'column',
             justifyContent: 'flex-start',
             alignItems: 'center',

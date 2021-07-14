@@ -22,6 +22,7 @@ import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 
 import ScrollArea from 'react-scrollbar';
+import Logo from 'assets/logo.png';
 export interface NavigatorProps
   extends Omit<DrawerProps, 'classes'>,
     WithStyles<typeof styles> {}
@@ -117,7 +118,8 @@ function Navigator(props: NavigatorProps) {
   return (
     <Drawer variant="permanent" {...other}>
       <ListItem className={clsx(classes.itemCategory, classes.logo)}>
-        Veternaria
+        <img width="24" loading="lazy" src={Logo} />
+        &nbsp;&nbsp; Veternaria
       </ListItem>
       <ScrollArea
         speed={0.8}
