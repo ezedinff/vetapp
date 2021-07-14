@@ -276,6 +276,64 @@ const purchasesRegistrationForm: FormElement[] = [
     size: { xs: 12, md: 12 },
     placeholder: 'Amount',
   },
+  {
+    name: 'supplier',
+    type: 'select',
+    size: { xs: 12, md: 12 },
+    placeholder: 'Supplier',
+  },
+  {
+    name: 'unit_price',
+    type: 'text',
+    size: { xs: 12, md: 12 },
+    placeholder: 'Unit Price',
+  },
+  {
+    name: 'payment_method',
+    type: 'select',
+    size: { xs: 12, md: 12 },
+    placeholder: 'Payment Method',
+  },
+];
+
+const discountRegistrationForm: FormElement[] = [
+  {
+    name: 'type',
+    type: 'select',
+    data: {
+      from: 'array',
+      options: [
+        { value: 'amount', label: 'Amount' },
+        { value: 'percentage', label: 'Percentage' },
+      ],
+    },
+    size: { xs: 12, md: 12 },
+    placeholder: 'Type',
+  },
+  {
+    name: 'description',
+    type: 'text',
+    size: { xs: 12, md: 12 },
+    placeholder: 'Description',
+  },
+  {
+    name: 'amount',
+    type: 'text',
+    size: { xs: 12, md: 12 },
+    placeholder: 'Amount',
+  },
+  {
+    name: 'start_date',
+    type: 'date',
+    size: { xs: 6, md: 6 },
+    placeholder: 'Discount Start date',
+  },
+  {
+    name: 'end_date',
+    type: 'date',
+    size: { xs: 6, md: 6 },
+    placeholder: 'Discount End date',
+  },
 ];
 export default {
   Pets: petRegistrationForm,
@@ -286,4 +344,7 @@ export default {
   Debts: debtRegistrationFrom,
   login: loginForm,
   Employees: employeeRegistrationForm,
+  Discounts: discountRegistrationForm,
+  purchases: purchasesRegistrationForm,
+  Products: productRegistrationForm,
 };

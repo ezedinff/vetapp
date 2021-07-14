@@ -9,6 +9,8 @@ import {
   IconButton,
 } from '@material-ui/core';
 import { Close } from '@material-ui/icons';
+import ScrollArea from 'react-scrollbar';
+
 interface Props {
   handleClose: () => void;
   isOpen: boolean;
@@ -39,10 +41,17 @@ const CustomDialog: React.FC<Props> = ({ children, ...props }) => {
           </div>
         </div>
       </DialogTitle>
-      <DialogContent>
-        <DialogContentText>{props.subTitle}</DialogContentText>
-        {children}
-      </DialogContent>
+      <ScrollArea
+        speed={0.8}
+        className="area"
+        contentClassName="content"
+        horizontal={false}
+      >
+        <DialogContent>
+          <DialogContentText>{props.subTitle}</DialogContentText>
+          {children}
+        </DialogContent>
+      </ScrollArea>
     </Dialog>
   );
 };

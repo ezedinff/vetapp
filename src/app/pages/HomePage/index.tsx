@@ -1,5 +1,4 @@
 import AdminLayout from 'app/components/layouts/AdminLayout';
-import Content from 'app/components/content';
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
 export function HomePage() {

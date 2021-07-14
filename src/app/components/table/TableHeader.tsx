@@ -4,8 +4,9 @@ type OpenModal = () => void;
 interface Props {
   title: string;
   openDialog: OpenModal;
+  hideCreate: boolean;
 }
-const TableHeader: React.FC<Props> = ({ title, openDialog }) => {
+const TableHeader: React.FC<Props> = ({ title, openDialog, hideCreate }) => {
   return (
     <>
       <div
@@ -18,16 +19,18 @@ const TableHeader: React.FC<Props> = ({ title, openDialog }) => {
         <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
           <Typography color="textPrimary" variant="h5" children={title} />
         </div>
-        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <Button
-            onClick={() => openDialog()}
-            size="medium"
-            variant="contained"
-            color="primary"
-          >
-            Create
-          </Button>
-        </div>
+        {!hideCreate && (
+          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <Button
+              onClick={() => openDialog()}
+              size="medium"
+              variant="contained"
+              color="primary"
+            >
+              Create
+            </Button>
+          </div>
+        )}
       </div>
     </>
   );

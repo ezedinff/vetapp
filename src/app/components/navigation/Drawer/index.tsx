@@ -21,6 +21,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 
+import ScrollArea from 'react-scrollbar';
 export interface NavigatorProps
   extends Omit<DrawerProps, 'classes'>,
     WithStyles<typeof styles> {}
@@ -94,6 +95,7 @@ const NavigatorLink = ({
           <List component="div" disablePadding>
             {children.map(childrenLink => (
               <NavigatorLink
+                key={childrenLink.id}
                 id={childrenLink.id}
                 location={location}
                 classes={classes}
@@ -114,23 +116,31 @@ function Navigator(props: NavigatorProps) {
   const location = useLocation();
   return (
     <Drawer variant="permanent" {...other}>
-      <List color="default" disablePadding>
-        <ListItem className={clsx(classes.itemCategory, classes.logo)}>
-          Veternaria
-        </ListItem>
-        {routes.map(({ id, path, icon, active, children }) => (
-          <NavigatorLink
-            id={id}
-            location={location}
-            classes={classes}
-            path={path}
-            icon={icon}
-            active={active}
-            children={children}
-          />
-        ))}
-        {/* <Divider className={classes.divider} /> */}
-      </List>
+      <ListItem className={clsx(classes.itemCategory, classes.logo)}>
+        Veternaria
+      </ListItem>
+      <ScrollArea
+        speed={0.8}
+        className="area"
+        contentClassName="content"
+        horizontal={false}
+      >
+        <List color="default" disablePadding>
+          {routes.map(({ id, path, icon, active, children }) => (
+            <NavigatorLink
+              key={id}
+              id={id}
+              location={location}
+              classes={classes}
+              path={path}
+              icon={icon}
+              active={active}
+              children={children}
+            />
+          ))}
+          {/* <Divider className={classes.divider} /> */}
+        </List>
+      </ScrollArea>
     </Drawer>
   );
 }

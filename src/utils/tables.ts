@@ -1,101 +1,246 @@
-import { TableColumn } from 'react-data-table-component';
-
-const petsTableColumns = [
+import { GridColumns } from '@material-ui/data-grid';
+const petsTableColumns: GridColumns = [
   {
-    name: 'Name',
-    selector: 'name',
+    field: 'name',
+    headerName: 'Name',
+    flex: 1,
   },
   {
-    name: 'Owner',
-    selector: 'owner',
+    headerName: 'Owner',
+    field: 'owner',
+    flex: 1,
   },
   {
-    name: 'Species',
-    selector: 'species',
+    headerName: 'Species',
+    field: 'species',
+    flex: 1,
   },
   {
-    name: 'Breed of pet',
-    selector: 'breed',
+    headerName: 'Breed of pet',
+    field: 'breed',
+    flex: 1,
   },
   {
-    name: 'Birth Date',
-    selector: 'birth_date',
+    headerName: 'Birth Date',
+    field: 'birth_date',
+    flex: 1,
   },
 ];
 
 const clientTableColumns = [
   {
-    name: 'First Name',
-    selector: 'firstName',
+    headerName: 'First Name',
+    field: 'firstName',
+    flex: 1,
   },
   {
-    name: 'Last Name',
-    selector: 'lastName',
+    headerName: 'Last Name',
+    field: 'lastName',
+    flex: 1,
   },
   {
-    name: 'Email',
-    selector: 'email',
+    headerName: 'Email',
+    field: 'email',
+    flex: 1,
   },
   {
-    name: 'Phone Number',
-    selector: 'phoneNumber',
+    headerName: 'Phone Number',
+    field: 'phoneNumber',
+    flex: 1,
   },
 ];
 
 const branchTAbleColumns = [
   {
-    name: 'Name',
-    selector: 'name',
+    headerName: 'Name',
+    field: 'name',
+    flex: 1,
   },
   {
-    name: 'Address',
-    selector: 'address',
+    headerName: 'Address',
+    field: 'address',
+    flex: 1,
   },
   {
-    name: 'Status',
-    selector: 'status',
+    headerName: 'Status',
+    field: 'status',
+    flex: 1,
   },
   {
-    name: 'Phone Number',
-    selector: 'phoneNumber',
+    headerName: 'Phone Number',
+    field: 'phoneNumber',
+    flex: 1,
   },
   {
-    status: 'Main Office',
-    selector: 'isMainOffice',
+    headerName: 'Main Office',
+    field: 'isMainOffice',
+    flex: 1,
   },
 ];
 
 const supplierTableColumns = clientTableColumns;
 const usersTableColumns = [
   {
-    name: 'First Name',
-    selector: 'firstName',
+    headerName: 'First Name',
+    field: 'firstName',
+    flex: 1,
   },
   {
-    name: 'Last Name',
-    selector: 'lastName',
+    headerName: 'Last Name',
+    field: 'lastName',
+    flex: 1,
   },
   {
-    name: 'Email',
-    selector: 'email',
+    headerName: 'Email',
+    field: 'email',
+    flex: 1,
   },
   {
-    name: 'Phone Number',
-    selector: 'phoneNumber',
+    headerName: 'Phone Number',
+    field: 'phoneNumber',
+    flex: 1,
   },
   {
-    name: 'Assigned Branch',
-    selector: 'assigned_branch',
+    headerName: 'Assigned Branch',
+    field: 'assigned_branch',
+    flex: 1,
   },
   {
-    name: 'Status',
-    selector: 'status',
+    headerName: 'Status',
+    field: 'status',
+    flex: 1,
   },
 ];
+
+const productsTableColumns = [
+  {
+    headerName: 'Product Name',
+    field: 'name',
+    flex: 1,
+  },
+  {
+    headerName: 'Description',
+    field: 'description',
+    flex: 1,
+  },
+  {
+    headerName: 'Brand',
+    field: 'brand',
+    flex: 1,
+  },
+  {
+    headerName: 'Price',
+    field: 'price',
+    flex: 1,
+  },
+  {
+    headerName: 'Category',
+    field: 'category',
+    flex: 1,
+  },
+  {
+    headerName: 'Measurement Unit',
+    field: 'unit',
+    flex: 1,
+  },
+  {
+    headerName: 'Available Amount',
+    field: 'available',
+    flex: 1,
+  },
+];
+
+const purchaseTableColumns = [
+  {
+    headerName: 'Product',
+    field: 'product',
+    flex: 1,
+  },
+  {
+    headerName: 'Quantity',
+    field: 'quantity',
+    flex: 1,
+  },
+  {
+    headerName: 'Supplier',
+    field: 'supplier',
+    flex: 1,
+  },
+  {
+    headerName: 'Unit Price',
+    field: 'unit_price',
+    flex: 1,
+  },
+  {
+    headerName: 'Payment Method',
+    field: 'payment_method',
+    flex: 1,
+  },
+];
+const discountsTableColumns = [
+  {
+    headerName: 'Type',
+    field: 'type',
+    flex: 1,
+  },
+  {
+    headerName: 'Description',
+    field: 'description',
+    flex: 1,
+  },
+  {
+    headerName: 'Approved by',
+    field: 'approver',
+    flex: 1,
+  },
+  {
+    headerName: 'Amount',
+    field: 'amount',
+    flex: 1,
+  },
+  {
+    headerName: 'Status',
+    field: 'status',
+    flex: 1,
+  },
+];
+
+const salesTableColumns = [
+  {
+    headerName: 'Client',
+    field: 'client',
+    flex: 1,
+  },
+  {
+    headerName: 'cashier',
+    field: 'user',
+    flex: 1,
+  },
+  {
+    headerName: 'Payment Method',
+    field: 'payment_method',
+    flex: 1,
+  },
+  {
+    headerName: 'product',
+    field: 'products',
+    flex: 1,
+  },
+];
+
 export default {
   pets: {
     columns: petsTableColumns,
-    data: [],
+    data: [
+      {
+        id: '12',
+        name: 'Cocky',
+        owner: 'Ezedin',
+        species: 'Dog',
+        breed: 'German breed',
+        birth_date: '2020-06-19',
+      },
+    ],
   },
   clients: {
     columns: clientTableColumns,
@@ -111,6 +256,22 @@ export default {
   },
   users: {
     columns: usersTableColumns,
+    data: [],
+  },
+  products: {
+    columns: productsTableColumns,
+    data: [],
+  },
+  purchases: {
+    columns: purchaseTableColumns,
+    data: [],
+  },
+  discounts: {
+    columns: discountsTableColumns,
+    data: [],
+  },
+  sales: {
+    columns: salesTableColumns,
     data: [],
   },
 };

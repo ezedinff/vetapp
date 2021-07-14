@@ -4,7 +4,7 @@ import { createStyles, withStyles, WithStyles } from '@material-ui/core';
 const styles = createStyles({
   label: {
     textTransform: 'capitalize',
-    fontWeight: 'bold',
+    fontWeight: 500,
   },
 });
 interface Props extends WithStyles<typeof styles> {

@@ -15,7 +15,6 @@ import { NotFoundPage } from './components/NotFoundPage/Loadable';
 import { ThemeProvider } from '@material-ui/core';
 import theme from 'theme';
 import AdminLayout from './components/layouts/AdminLayout';
-import Page from './pages/Admin/Page';
 import { LoginPage } from './pages/Auth/LoginPage';
 export function App() {
   return (

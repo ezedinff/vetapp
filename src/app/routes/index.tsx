@@ -86,13 +86,6 @@ const routes: CustomRoute[] = [
         roles: ['admin', 'manager'],
       },
       {
-        id: 'Stock',
-        path: '/admin/stock',
-        active: false,
-        component: StockPage,
-        roles: ['admin', 'manager'],
-      },
-      {
         id: 'Products',
         path: '/admin/products',
         active: false,

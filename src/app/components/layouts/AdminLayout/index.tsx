@@ -12,8 +12,6 @@ import Header from '../../navigation/Header';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { drawerWidth } from 'utils/constants';
 import routes from 'app/routes';
-import Page from 'app/pages/Admin/Page';
-import Dashboard from 'app/pages/Admin/Dashboard';
 export interface AdminLayoutProps extends WithStyles<typeof styles> {}
 const AdminLayout = (props: AdminLayoutProps) => {
   const { classes } = props;
