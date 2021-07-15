@@ -5,25 +5,13 @@ import SubmitButton from './SubmitButton';
 import TextInput from './TextInput';
 import { useFormik } from 'formik';
 import validation from 'utils/validation';
-import {
-  Checkbox,
-  FormControlLabel,
-  Grid,
-  Link,
-  MenuItem,
-  TextField,
-} from '@material-ui/core';
+import { Checkbox, FormControlLabel, Grid, Link } from '@material-ui/core';
 import { Link as RouterLink } from 'react-router-dom';
 import MultiSelector from './MultiSelector';
 import { MultiSelectorOptionType } from './MultiSelector/types';
-import Selector from './Selector';
 import PasswordInput from './PasswordInput';
-import {
-  KeyboardDatePicker,
-  MuiPickersUtilsProvider,
-} from '@material-ui/pickers';
-import DateFnsUtils from '@date-io/date-fns';
 import { useEffect } from 'react';
+import Selector from './Selector';
 interface Props {
   data?: any;
   submitForm: (value) => void;

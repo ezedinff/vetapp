@@ -1,28 +1,63 @@
 import React from 'react';
-import { Avatar, Card, CardContent, Grid, Typography } from '@material-ui/core';
-import InsertChartIcon from '@material-ui/icons/InsertChartOutlined';
+import {
+  Avatar,
+  Box,
+  Card,
+  CardContent,
+  Grid,
+  Typography,
+} from '@material-ui/core';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import MoneyIcon from '@material-ui/icons/Money';
+import { red, teal } from '@material-ui/core/colors';
 
-const Board = props => {
-  return (
-    <Card sx={{ height: '100%', borderRight: '3px solid black' }} {...props}>
-      <CardContent>
-        <Grid container spacing={3}>
-          <Grid item>
-            <Typography color="textSecondary" gutterBottom variant="h6">
-              TASKS PROGRESS
-            </Typography>
-            <Typography color="textPrimary" variant="h4">
-              75.5%
-            </Typography>
-          </Grid>
-          <Grid item>
-            <Avatar style={{ background: '#fff' }}>
-              <InsertChartIcon style={{ color: '#17a2b8' }} />
-            </Avatar>
-          </Grid>
+const Budget = props => (
+  <Card style={{ height: '100%' }} {...props}>
+    <CardContent>
+      <Grid container spacing={3} style={{ justifyContent: 'space-between' }}>
+        <Grid item>
+          <Typography color="textSecondary" gutterBottom variant="h6">
+            BUDGET
+          </Typography>
+          <Typography color="textPrimary" variant="h3">
+            $24,000
+          </Typography>
         </Grid>
-      </CardContent>
-    </Card>
-  );
-};
-export default Board;
+        <Grid item>
+          <Avatar
+            style={{
+              backgroundColor: teal[600],
+              height: 56,
+              width: 56,
+            }}
+          >
+            <MoneyIcon />
+          </Avatar>
+        </Grid>
+      </Grid>
+      <Box
+        style={{
+          paddingTop: 2,
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <ArrowDownwardIcon style={{ color: teal[900] }} />
+        <Typography
+          style={{
+            color: teal[900],
+            margin: '4px',
+          }}
+          variant="body2"
+        >
+          12%
+        </Typography>
+        <Typography color="textSecondary" variant="caption">
+          Since last month
+        </Typography>
+      </Box>
+    </CardContent>
+  </Card>
+);
+
+export default Budget;
