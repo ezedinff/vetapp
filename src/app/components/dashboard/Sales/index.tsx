@@ -1,17 +1,13 @@
+import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import {
   Box,
-  Button,
   Card,
   CardContent,
   CardHeader,
-  Divider,
   useTheme,
   colors,
 } from '@material-ui/core';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
-import React from 'react';
 
 const Sales = props => {
   const theme = useTheme();

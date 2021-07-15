@@ -8,6 +8,7 @@ import {
   Person,
   Money,
   LocalHospitalOutlined,
+  Settings,
 } from '@material-ui/icons';
 import DashboardPage from 'app/pages/Admin/Dashboard';
 import { PetsPage } from 'app/pages/Admin/PetsPage';
@@ -23,6 +24,7 @@ import { PurchasePage } from 'app/pages/Admin/PurchasePage/Loadable';
 import { StockPage } from 'app/pages/Admin/StockPage/Loadable';
 import { ProductPage } from 'app/pages/Admin/ProductPage/Loadable';
 import { DiscountPage } from 'app/pages/Admin/DiscountPage/Loadable';
+import { SettingsPage } from 'app/pages/Admin/SettingsPage/Loadable';
 interface CustomRoute {
   id: string;
   icon?: React.ReactNode;
@@ -132,6 +134,14 @@ const routes: CustomRoute[] = [
     path: '/admin/consultation',
     active: false,
     component: ConsultationPage,
+    roles: ['admin', 'manager'],
+  },
+  {
+    id: 'Settings',
+    icon: <Settings />,
+    path: '/admin/settings',
+    active: false,
+    component: SettingsPage,
     roles: ['admin', 'manager'],
   },
 ];
