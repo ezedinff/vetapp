@@ -61,8 +61,8 @@ const petRegistrationForm: FormElement[] = [
     data: {
       from: 'array',
       options: [
-        { value: 'male', label: 'Male' },
-        { value: 'female', label: 'Female' },
+        { value: 'Dog', label: 'Dog' },
+        { value: 'Cat', label: 'Cat' },
       ],
     },
     size: { xs: 12, md: 12 },
@@ -74,7 +74,7 @@ const petRegistrationForm: FormElement[] = [
     size: { xs: 12, md: 12 },
   },
   {
-    name: 'bod',
+    name: 'birth_date',
     type: 'date',
     placeholder: 'Birth Date',
     size: { xs: 12, md: 12 },

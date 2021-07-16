@@ -23,9 +23,10 @@ const Selector: React.FC<Props> = ({ from, options, url, ...rest }) => {
       // @Todo get options from remote using the provided url
     }
   }, [url, options]);
+  console.log(rest);
   return (
     <TextInput select {...rest}>
-      <MenuItem selected value={''} key="" disabled>
+      <MenuItem value={''} key="" disabled>
         <em>None</em>
       </MenuItem>
       {options
@@ -39,4 +40,4 @@ const Selector: React.FC<Props> = ({ from, options, url, ...rest }) => {
   );
 };
 
-export default Selector;
+export default React.memo(Selector);

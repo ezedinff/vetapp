@@ -96,12 +96,11 @@ export const FormInput = ({
         <div key={element.name} style={{ width: '100%', margin: '12px 0' }}>
           <FormItem label={element.placeholder}>
             <Selector
-              type={element.type}
               name={element.name}
               label={element.placeholder}
               error={Boolean(errors[element.name] && touched[element.name])}
               helperText={errors[element.name]}
-              value={values[element.name]}
+              value={values[element.name] ? values[element.name] : ''}
               onChange={handleChange}
               onBlur={handleBlur}
               from={element.data.from}
@@ -141,7 +140,7 @@ const Form: FC<Props> = ({
 }) => {
   const submit = value => {
     console.log(value);
-    submitForm(value);
+    alert(JSON.stringify(value));
   };
   const {
     handleSubmit,
@@ -155,13 +154,14 @@ const Form: FC<Props> = ({
     initialValues: {},
     validationSchema: validation.petsFormValidationSchema,
     onSubmit: submit,
+    enableReinitialize: true,
   });
 
   useEffect(() => {
     if (!!data) {
-      elements.forEach(element =>
-        setFieldValue(element.name, data[element.name]),
-      );
+      elements.forEach(element => {
+        setFieldValue(element.name, data[element.name]);
+      });
     }
   }, [elements, data]);
 

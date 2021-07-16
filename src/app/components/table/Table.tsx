@@ -72,9 +72,10 @@ const d = [
   // { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
   // { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
 ];
-type Actions = 'Create' | 'Edit' | 'Delete';
+type Actions = 'Create' | 'Update' | 'Delete';
 const CustomDataGrid = ({ title, form, data, columns, actions }) => {
   const [open, setOpen] = useState(false);
+  const [rowToBeEdited, setRowToBeEdited] = useState(null);
   const [action, setAction] = useState<Actions>('Create');
   const getEntity = () => {
     let t = title.split(' ');
@@ -88,8 +89,17 @@ const CustomDataGrid = ({ title, form, data, columns, actions }) => {
   const handleClose = () => {
     setOpen(false);
   };
-  const handleOpen = () => {
-    setOpen(true);
+  const handleOpen = (action: 'Update' | 'Create', id?: string) => {
+    if (action === 'Update') {
+      const row = data.find(d => d.id === id);
+      setRowToBeEdited(row);
+      setOpen(true);
+      setAction(action);
+    } else {
+      setRowToBeEdited(null);
+      setOpen(true);
+      setAction(action);
+    }
   };
   const submit = value => {
     console.log(value);
@@ -105,7 +115,9 @@ const CustomDataGrid = ({ title, form, data, columns, actions }) => {
         renderCell: c => (
           <>
             {actions.edit && (
-              <IconButton>
+              <IconButton
+                onClick={() => handleOpen('Update', c.value?.toString())}
+              >
                 <EditOutlined />
               </IconButton>
             )}
@@ -129,6 +141,7 @@ const CustomDataGrid = ({ title, form, data, columns, actions }) => {
           title={getFormTitle(action)}
           children={
             <Form
+              data={rowToBeEdited}
               submitForm={submit}
               elements={form}
               submitButtonTitle={'Create'}
@@ -140,8 +153,7 @@ const CustomDataGrid = ({ title, form, data, columns, actions }) => {
         hideCreate={!actions.create}
         title={title}
         openDialog={() => {
-          setOpen(!open);
-          setAction('Create');
+          handleOpen('Create', '');
         }}
       />
       <DataGrid

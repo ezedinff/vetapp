@@ -19,7 +19,7 @@ const Budget = props => (
           <Typography color="textSecondary" gutterBottom variant="h6">
             BUDGET
           </Typography>
-          <Typography color="textPrimary" variant="h3">
+          <Typography color="textPrimary" variant="h5">
             $24,000
           </Typography>
         </Grid>

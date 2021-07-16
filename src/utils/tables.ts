@@ -238,7 +238,7 @@ export default {
         owner: 'Ezedin',
         species: 'Dog',
         breed: 'German breed',
-        birth_date: '2020-06-19',
+        birth_date: new Date().toISOString().substring(0, 10),
       },
     ],
   },
