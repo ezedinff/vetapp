@@ -140,7 +140,8 @@ const Form: FC<Props> = ({
 }) => {
   const submit = value => {
     console.log(value);
-    alert(JSON.stringify(value));
+    submitForm(value);
+    // alert(JSON.stringify(value));
   };
   const {
     handleSubmit,
