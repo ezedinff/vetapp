@@ -112,10 +112,6 @@
       "last 1 safari version"
     ]
   },
-  "engines": {
-    "npm": ">=6.4.1",
-    "node": ">=12.0.0"
-  },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
       "yarn run eslint --fix"
