@@ -9,7 +9,7 @@ class APIError extends Error {
    * @param {number} status - HTTP status code
    */
   status = 500;
-  constructor(message = 'An unknown error occured', status = 500) {
+  constructor(message = 'An unknown error occurred', status = 500) {
     super(message);
     this.status = status;
   }
