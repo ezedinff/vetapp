@@ -55,9 +55,9 @@ const petRegistrationForm: FormElement[] = [
     size: { xs: 12, md: 12 },
   },
   {
-    name: 'species',
+    name: 'spiece',
     type: 'select',
-    placeholder: 'Specie',
+    placeholder: 'Species',
     data: {
       from: 'array',
       options: [
@@ -68,7 +68,7 @@ const petRegistrationForm: FormElement[] = [
     size: { xs: 12, md: 12 },
   },
   {
-    name: 'breed',
+    name: 'breedOfPet',
     type: 'text',
     placeholder: 'Breed of pet',
     size: { xs: 12, md: 12 },
@@ -145,7 +145,7 @@ const clientRegistrationFrom = [
     size: { xs: 12, md: 12 },
   },
   {
-    name: 'phoneNumber',
+    name: 'cellPhone',
     type: 'text',
     placeholder: 'Phone Number',
     size: { xs: 12, md: 12 },
@@ -336,15 +336,15 @@ const discountRegistrationForm: FormElement[] = [
   },
 ];
 export default {
-  Pets: petRegistrationForm,
-  Clients: clientRegistrationFrom,
+  clients: clientRegistrationFrom,
+  branches: branchRegistrationFrom,
+  pets: petRegistrationForm,
+  debts: debtRegistrationFrom,
   inventory: inventoryRegistrationFrom,
-  Branches: branchRegistrationFrom,
-  Users: userRegistrationFrom,
-  Debts: debtRegistrationFrom,
+  users: employeeRegistrationForm,
   login: loginForm,
-  Employees: employeeRegistrationForm,
-  Discounts: discountRegistrationForm,
+  employees: employeeRegistrationForm,
+  discounts: discountRegistrationForm,
   purchases: purchasesRegistrationForm,
-  Products: productRegistrationForm,
+  products: productRegistrationForm,
 };

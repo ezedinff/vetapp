@@ -45,7 +45,7 @@ const clientTableColumns = [
   },
   {
     headerName: 'Phone Number',
-    field: 'phoneNumber',
+    field: 'cellPhone',
     flex: 1,
   },
 ];

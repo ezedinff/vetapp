@@ -16,23 +16,25 @@ import { ThemeProvider } from '@material-ui/core';
 import theme from 'theme';
 import AdminLayout from './components/layouts/AdminLayout';
 import { LoginPage } from './pages/Auth/LoginPage';
+import { AppMessages } from './pages/AppMessages';
 export function App() {
   return (
-    <BrowserRouter>
-      <Helmet
-        titleTemplate="%s - Veterinarian app"
-        defaultTitle="Veterinarian app"
-      >
-        <meta name="description" content="A Veterinarian application" />
-      </Helmet>
-      <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Helmet
+          titleTemplate="%s - Veterinarian app"
+          defaultTitle="Veterinarian app"
+        >
+          <meta name="description" content="A Veterinarian application" />
+        </Helmet>
         <Switch>
           <Route path="/login" component={LoginPage} />
           <Route path="/admin" component={AdminLayout} />
           <Redirect from={'/'} to={'/login'} />
           <Route component={NotFoundPage} />
         </Switch>
-      </ThemeProvider>
-    </BrowserRouter>
+        <AppMessages />
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }

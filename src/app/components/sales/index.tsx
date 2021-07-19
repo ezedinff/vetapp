@@ -12,10 +12,13 @@ import AddProduct from './left/AddProduct';
 import SalesDetail from './right/SalesDetail';
 
 const Sales = () => {
+  const [products, setProducts] = React.useState([
+    { product: '', price: '', qty: '' },
+  ]);
   return (
     <Grid container spacing={2} style={{ padding: '0 24px' }}>
       <Grid item md={8}>
-        <Container component={Paper} style={{ padding: '24px' }}>
+        <Container style={{ padding: '24px' }}>
           <div
             style={{
               display: 'flex',
@@ -32,6 +35,12 @@ const Sales = () => {
               <Button
                 variant="contained"
                 color="primary"
+                onClick={() => {
+                  setProducts([
+                    ...products,
+                    { product: '', price: '', qty: '' },
+                  ]);
+                }}
                 style={{ marginBottom: '8px' }}
               >
                 <Add /> Product
@@ -39,7 +48,7 @@ const Sales = () => {
             </div>
           </div>
           <Divider color="textSecondary" style={{ marginBottom: '16px' }} />
-          <AddProduct />
+          <AddProduct products={products} />
         </Container>
       </Grid>
       <Grid item md={4}>

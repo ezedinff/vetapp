@@ -15,23 +15,20 @@ export interface TextInputProps
   name: string;
   example?: string;
 }
-const TextInput: React.FC<TextInputProps> = ({
-  example,
-  classes,
-  label,
-  ...rest
-}) => {
-  return (
-    <Box className={classes.root}>
-      <TextField
-        className={classes.input}
-        placeholder={example || label}
-        variant="outlined"
-        size="small"
-        {...rest}
-      />
-    </Box>
-  );
-};
+const TextInput: React.FC<TextInputProps> = React.memo(
+  ({ example, classes, label, ...rest }) => {
+    return (
+      <Box className={classes.root}>
+        <TextField
+          className={classes.input}
+          placeholder={example || label}
+          variant="outlined"
+          size="small"
+          {...rest}
+        />
+      </Box>
+    );
+  },
+);
 
 export default withStyles(styles)(TextInput);

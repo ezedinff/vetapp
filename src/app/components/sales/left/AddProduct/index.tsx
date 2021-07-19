@@ -57,9 +57,30 @@ const SalesBottom = () => {
   );
 };
 
-const ProductForm = () => {
-  const columns = ['Product', 'Price', 'Qty', 'Discount'];
+const columns = ['Product', 'Price', 'Qty', 'Total'];
+const ProductForm = ({ index }) => {
   const elements = [];
+  return (
+    <>
+      <Grid container spacing={2} style={{ margin: 'auto' }}>
+        {columns.map(c => {
+          return c !== '' ? (
+            <Grid item xs={12} md={3}>
+              <TextInput name={`${c}_${index}`} label="" example="" />
+            </Grid>
+          ) : (
+            <Grid item xs={12} md={2}>
+              <IconButton>
+                <Close />
+              </IconButton>
+            </Grid>
+          );
+        })}
+      </Grid>
+    </>
+  );
+};
+const AddProduct = ({ products }) => {
   return (
     <>
       <Grid container>
@@ -72,27 +93,12 @@ const ProductForm = () => {
         ))}
         <Divider />
       </Grid>
-      <Grid container spacing={2} style={{ margin: 'auto' }}>
-        {columns.map(c => {
-          return c !== '' ? (
-            <Grid item xs={12} md={3}>
-              <TextInput name="" label="" example="" />
-            </Grid>
-          ) : (
-            <Grid item xs={12} md={2}>
-              <IconButton>
-                <Close />
-              </IconButton>
-            </Grid>
-          );
-        })}
-      </Grid>
+      {products.map(product => (
+        <ProductForm index={product} />
+      ))}
       <SalesBottom />
     </>
   );
-};
-const AddProduct = () => {
-  return <ProductForm />;
 };
 
 export default AddProduct;

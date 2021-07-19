@@ -16,6 +16,7 @@ interface Props {
   data?: any;
   submitForm: (value) => void;
   elements: FormElement[];
+  loading: boolean;
   submitButtonTitle: string;
 }
 const defaultOptions: MultiSelectorOptionType[] = [
@@ -136,12 +137,11 @@ const Form: FC<Props> = ({
   data,
   submitForm,
   elements,
+  loading,
   submitButtonTitle = 'Create',
 }) => {
   const submit = value => {
-    console.log(value);
     submitForm(value);
-    // alert(JSON.stringify(value));
   };
   const {
     handleSubmit,
@@ -206,7 +206,7 @@ const Form: FC<Props> = ({
             color="primary"
             onClick={() => submit(values)}
             // disabled={Boolean(Object.entries(errors).length)}
-            loading={false}
+            loading={loading}
             title={submitButtonTitle}
           />
         </div>

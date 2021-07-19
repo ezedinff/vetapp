@@ -23,7 +23,6 @@ const Selector: React.FC<Props> = ({ from, options, url, ...rest }) => {
       // @Todo get options from remote using the provided url
     }
   }, [url, options]);
-  console.log(rest);
   return (
     <TextInput select {...rest}>
       <MenuItem value={''} key="" disabled>

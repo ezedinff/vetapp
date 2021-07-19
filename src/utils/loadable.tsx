@@ -1,8 +1,6 @@
+import { LoadingScreen } from 'app/components/LoadingScreens';
 import React, { lazy, Suspense } from 'react';
 
-interface Opts {
-  fallback: React.ReactNode;
-}
 type Unpromisify<T> = T extends Promise<infer P> ? P : never;
 
 export const lazyLoad = <
@@ -11,7 +9,6 @@ export const lazyLoad = <
 >(
   importFunc: () => T,
   selectorFunc?: (s: Unpromisify<T>) => U,
-  opts: Opts = { fallback: null },
 ) => {
   let lazyFactory: () => Promise<{ default: U }> = importFunc;
 
@@ -23,7 +20,7 @@ export const lazyLoad = <
   const LazyComponent = lazy(lazyFactory);
 
   return (props: React.ComponentProps<U>): JSX.Element => (
-    <Suspense fallback={opts.fallback!}>
+    <Suspense fallback={<LoadingScreen />}>
       <LazyComponent {...props} />
     </Suspense>
   );

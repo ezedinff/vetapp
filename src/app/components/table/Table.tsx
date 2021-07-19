@@ -18,63 +18,34 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import { Delete, DeleteOutlined, Edit, EditOutlined } from '@material-ui/icons';
 import Container from '@material-ui/core/Container';
-import NoData from 'assets/NoData.svg';
 
 import { DataGrid, GridColumns } from '@material-ui/data-grid';
 import Box from '@material-ui/core/Box/Box';
 import Button from '@material-ui/core/Button';
-
-const c = [
-  {
-    field: 'firstName',
-    headerName: 'First name',
-    flex: 1,
-  },
-  {
-    field: 'lastName',
-    headerName: 'Last name',
-    flex: 1,
-  },
-  {
-    field: 'age',
-    headerName: 'Age',
-    flex: 1,
-  },
-  {
-    field: 'fullName',
-    headerName: 'Full name',
-    description: 'This column has a value getter and is not sortable.',
-    flex: 1,
-    valueGetter: params =>
-      `${params.getValue(params.id, 'firstName') || ''} ${
-        params.getValue(params.id, 'lastName') || ''
-      }`,
-  },
-  {
-    field: 'id',
-    headerName: 'Actions',
-    sortable: false,
-    flex: 1,
-    renderCell: c => (
-      <button onClick={() => alert(c.value)}>{JSON.stringify(c.field)}</button>
-    ),
-  },
-];
-
-const d = [
-  // { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-  // { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-  // { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-  // { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-  // { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-  // { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-  // { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-  // { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-  // { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-];
+import Sales from '../sales';
+import { actionChannel } from 'redux-saga/effects';
+import ConfirmModal from '../Modals/confirm.modal';
 type Actions = 'Create' | 'Update' | 'Delete';
-const CustomDataGrid = ({ title, form, data, columns, actions }) => {
+interface Props {
+  title: any;
+  form: any;
+  data: any;
+  columns: any;
+  actions: any;
+  loading: boolean;
+  onSubmit?: (value, action: Actions) => void;
+}
+const CustomDataGrid: React.FC<Props> = ({
+  title,
+  form,
+  data,
+  columns,
+  actions,
+  loading,
+  onSubmit,
+}) => {
   const [open, setOpen] = useState(false);
+  const [confirmOpen, setConfirmOpen] = useState(false);
   const [rowToBeEdited, setRowToBeEdited] = useState(null);
   const [action, setAction] = useState<Actions>('Create');
   const getEntity = () => {
@@ -91,7 +62,7 @@ const CustomDataGrid = ({ title, form, data, columns, actions }) => {
   };
   const handleOpen = (action: 'Update' | 'Create', id?: string) => {
     if (action === 'Update') {
-      const row = data.find(d => d.id === id);
+      const row = data.find(d => d.id == id);
       setRowToBeEdited(row);
       setOpen(true);
       setAction(action);
@@ -102,7 +73,28 @@ const CustomDataGrid = ({ title, form, data, columns, actions }) => {
     }
   };
   const submit = value => {
-    console.log(value);
+    if (onSubmit) {
+      if (action === 'Update') {
+        // @ts-ignore
+        onSubmit({ ...rowToBeEdited, ...value }, action);
+      } else {
+        onSubmit(value, action);
+      }
+    }
+  };
+
+  const onDelete = id => {
+    const row = data.find(d => d.id == id);
+    setRowToBeEdited(row);
+    setAction('Delete');
+    setConfirmOpen(true);
+  };
+  const onDeleteConfirmed = () => {
+    console.log('Delete', rowToBeEdited);
+    setConfirmOpen(false);
+    if (onSubmit) {
+      onSubmit(rowToBeEdited, action);
+    }
   };
   const addActionButtonIfNeeded = (columns: GridColumns) => {
     const d: GridColumns = [];
@@ -122,7 +114,7 @@ const CustomDataGrid = ({ title, form, data, columns, actions }) => {
               </IconButton>
             )}
             {actions.delete && (
-              <IconButton>
+              <IconButton onClick={() => onDelete(c.value?.toString())}>
                 <DeleteOutlined />
               </IconButton>
             )}
@@ -140,13 +132,32 @@ const CustomDataGrid = ({ title, form, data, columns, actions }) => {
           handleClose={handleClose}
           title={getFormTitle(action)}
           children={
-            <Form
-              data={rowToBeEdited}
-              submitForm={submit}
-              elements={form}
-              submitButtonTitle={'Create'}
-            />
+            title.indexOf('sale') != -1 ? (
+              <Sales />
+            ) : (
+              <Form
+                loading={loading}
+                data={rowToBeEdited}
+                submitForm={submit}
+                elements={form}
+                submitButtonTitle={action}
+              />
+            )
           }
+        />
+      )}
+      {actions.delete && (
+        <ConfirmModal
+          title="Delete"
+          contentText={`Are you sure you want to delete this ?`}
+          open={confirmOpen}
+          confirmText="Yes"
+          cancelText="No"
+          deleteAction
+          onClose={() => {
+            setConfirmOpen(!confirmOpen);
+          }}
+          onConfirm={onDeleteConfirmed}
         />
       )}
       <TableHeader
@@ -161,6 +172,7 @@ const CustomDataGrid = ({ title, form, data, columns, actions }) => {
         rows={data}
         columns={addActionButtonIfNeeded(columns)}
         pageSize={5}
+        loading={loading}
         checkboxSelection={false}
         disableSelectionOnClick
       />

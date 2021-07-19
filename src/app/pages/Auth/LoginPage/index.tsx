@@ -99,6 +99,7 @@ export function LoginPage() {
               />
             </div>
             <Form
+              loading={false}
               submitForm={submit}
               data={{ username: 'test@gmail.com', password: '123456' }}
               elements={forms.login}

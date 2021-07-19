@@ -10,21 +10,23 @@ import {
   LocalHospitalOutlined,
   Settings,
 } from '@material-ui/icons';
+import { AdminPage } from 'app/pages/Admin/AdminPage';
 import DashboardPage from 'app/pages/Admin/Dashboard';
-import { PetsPage } from 'app/pages/Admin/PetsPage';
-import { ClientsPage } from 'app/pages/Admin/ClientsPage/Loadable';
-import { SuppliersPage } from 'app/pages/Admin/SuppliersPage/Loadable';
-import { InventoryPage } from 'app/pages/Admin/InventoryPage/Loadable';
-import { BranchesPage } from 'app/pages/Admin/BranchesPage/Loadable';
-import { UsersPage } from 'app/pages/Admin/UsersPage/Loadable';
-import { DebtsPage } from 'app/pages/Admin/DebtsPage/Loadable';
-import { ConsultationPage } from 'app/pages/Admin/ConsultationPage/Loadable';
-import { SalesPage } from 'app/pages/Admin/SalesPage/Loadable';
-import { PurchasePage } from 'app/pages/Admin/PurchasePage/Loadable';
-import { StockPage } from 'app/pages/Admin/StockPage/Loadable';
-import { ProductPage } from 'app/pages/Admin/ProductPage/Loadable';
-import { DiscountPage } from 'app/pages/Admin/DiscountPage/Loadable';
-import { SettingsPage } from 'app/pages/Admin/SettingsPage/Loadable';
+import { Paper } from '@material-ui/core';
+// import { PetsPage } from 'app/pages/Admin/PetsPage';
+// import { ClientsPage } from 'app/pages/Admin/ClientsPage/Loadable';
+// import { SuppliersPage } from 'app/pages/Admin/SuppliersPage/Loadable';
+// import { InventoryPage } from 'app/pages/Admin/InventoryPage/Loadable';
+// import { BranchesPage } from 'app/pages/Admin/BranchesPage/Loadable';
+// import { UsersPage } from 'app/pages/Admin/UsersPage/Loadable';
+// import { DebtsPage } from 'app/pages/Admin/DebtsPage/Loadable';
+// import { ConsultationPage } from 'app/pages/Admin/ConsultationPage/Loadable';
+// import { SalesPage } from 'app/pages/Admin/SalesPage/Loadable';
+// import { PurchasePage } from 'app/pages/Admin/PurchasePage/Loadable';
+// import { StockPage } from 'app/pages/Admin/StockPage/Loadable';
+// import { ProductPage } from 'app/pages/Admin/ProductPage/Loadable';
+// import { DiscountPage } from 'app/pages/Admin/DiscountPage/Loadable';
+// import { SettingsPage } from 'app/pages/Admin/SettingsPage/Loadable';
 interface CustomRoute {
   id: string;
   icon?: React.ReactNode;
@@ -48,7 +50,7 @@ const routes: CustomRoute[] = [
     icon: <Pets />,
     path: '/admin/pets',
     active: false,
-    component: PetsPage,
+    component: AdminPage,
     roles: ['admin', 'manager'],
   },
   {
@@ -56,7 +58,7 @@ const routes: CustomRoute[] = [
     icon: <People />,
     path: '/admin/clients',
     active: false,
-    component: ClientsPage,
+    component: AdminPage,
     roles: ['admin', 'manager'],
   },
   {
@@ -64,41 +66,41 @@ const routes: CustomRoute[] = [
     icon: <People />,
     path: '/admin/suppliers',
     active: false,
-    component: SuppliersPage,
+    component: AdminPage,
     roles: ['admin', 'manager'],
   },
   {
     id: 'Inventory',
     icon: <Store />,
     active: false,
-    component: InventoryPage,
+    component: undefined,
     children: [
       {
         id: 'Sales',
         path: '/admin/sales',
         active: false,
-        component: SalesPage,
+        component: AdminPage,
         roles: ['admin', 'manager'],
       },
       {
         id: 'Purchases',
         path: '/admin/purchases',
         active: false,
-        component: PurchasePage,
+        component: AdminPage,
         roles: ['admin', 'manager'],
       },
       {
         id: 'Products',
         path: '/admin/products',
         active: false,
-        component: ProductPage,
+        component: AdminPage,
         roles: ['admin', 'manager'],
       },
       {
         id: 'Discounts',
         path: '/admin/discounts',
         active: false,
-        component: DiscountPage,
+        component: Paper,
         roles: ['admin', 'manager'],
       },
     ],
@@ -109,7 +111,7 @@ const routes: CustomRoute[] = [
     icon: <HomeSharp />,
     path: '/admin/branches',
     active: false,
-    component: BranchesPage,
+    component: AdminPage,
     roles: ['admin', 'manager'],
   },
   {
@@ -117,32 +119,32 @@ const routes: CustomRoute[] = [
     icon: <Person />,
     path: '/admin/users',
     active: false,
-    component: UsersPage,
+    component: AdminPage,
     roles: ['admin', 'manager'],
   },
-  {
-    id: 'Debt',
-    icon: <Money />,
-    path: '/admin/debts',
-    active: false,
-    component: DebtsPage,
-    roles: ['admin', 'manager'],
-  },
-  {
-    id: 'Consultation',
-    icon: <LocalHospitalOutlined />,
-    path: '/admin/consultation',
-    active: false,
-    component: ConsultationPage,
-    roles: ['admin', 'manager'],
-  },
-  {
-    id: 'Settings',
-    icon: <Settings />,
-    path: '/admin/settings',
-    active: false,
-    component: SettingsPage,
-    roles: ['admin', 'manager'],
-  },
+  // {
+  //   id: 'Debt',
+  //   icon: <Money />,
+  //   path: '/admin/debts',
+  //   active: false,
+  //   component: DebtsPage,
+  //   roles: ['admin', 'manager'],
+  // },
+  // {
+  //   id: 'Consultation',
+  //   icon: <LocalHospitalOutlined />,
+  //   path: '/admin/consultation',
+  //   active: false,
+  //   component: ConsultationPage,
+  //   roles: ['admin', 'manager'],
+  // },
+  // {
+  //   id: 'Settings',
+  //   icon: <Settings />,
+  //   path: '/admin/settings',
+  //   active: false,
+  //   component: SettingsPage,
+  //   roles: ['admin', 'manager'],
+  // },
 ];
 export default routes;

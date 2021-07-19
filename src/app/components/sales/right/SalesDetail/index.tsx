@@ -85,7 +85,7 @@ const Receivables = () => {
     onSubmit: submit,
   });
   return (
-    <Container component={Paper} style={{ padding: '24px', marginTop: '24px' }}>
+    <Container style={{ padding: '24px', marginTop: '24px' }}>
       <Typography variant="h5" color="textSecondary">
         Receivables
       </Typography>
@@ -128,7 +128,7 @@ const SalesDetail = () => {
   });
   return (
     <>
-      <Container component={Paper} style={{ padding: '24px' }}>
+      <Container style={{ padding: '24px' }}>
         <Typography variant="h5" color="textSecondary">
           Sales Detail
         </Typography>
